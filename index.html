@@ -15,7 +15,8 @@
     <h2 class="title has-text-centered dividing-header">UpVote!</h2>
     <div class="section">
       <!-- v-for utilizes sortedSubmissions to sort the list -->
-      <article class="media" v-for="submission in sortedSubmissions" v-bind:key="submission.id">
+      <!-- add v-bind to add class when vote count passes 20 votes -->
+      <article class="media" v-for="submission in sortedSubmissions" v-bind:key="submission.id" v-bind:class="{ 'blue-border': submission.votes >= 20 }">
         <figure class="media-left">
           <img class="image is-64x64" v-bind:src="submission.submissionImage">
         </figure>
