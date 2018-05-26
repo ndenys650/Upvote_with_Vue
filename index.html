@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <title>Upvote!</title>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
   <link rel="stylesheet"
@@ -17,30 +18,8 @@
       <!-- v-for utilizes sortedSubmissions to sort the list -->
       <!-- add v-bind to add class when vote count passes 20 votes -->
       <article class="media" v-for="submission in sortedSubmissions" v-bind:key="submission.id" v-bind:class="{ 'blue-border': submission.votes >= 20 }">
-        <figure class="media-left">
-          <img class="image is-64x64" v-bind:src="submission.submissionImage">
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>
-                <a v-bind:href="submission.url" class="has-text-info">{{ submission.title }}</a>
-                <span class="tag is-small">#{{ submission.id }}</span>
-              </strong>
-              <br>{{ submission.description }}<br>
-              <small class="is-size-7">Submitted by:
-                <img class="image is-24x24" v-bind:src="submission.avatar">
-              </small>
-            </p>
-          </div>
-        </div>
-        <div class="media-rght">
-          <!-- add on click event listener utilizing v-on -->
-          <span class="icon is-small" @click="upvote(submission.id)">
-            <i class="fa fa-chevron-up"></i>
-            <strong class="has-text-info">{{ submission.votes }}</strong>
-          </span>
-        </div>
+        <!--  -->
+        <submission-component v-bind:submission="submission" v-bind:submissions="sortedSubmissions"></submission-component>
       </article>
     </div>
   </div>
